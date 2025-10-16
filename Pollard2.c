@@ -1,3 +1,11 @@
+/*
+
+Sistema RSA com Fatoração ρ de Pollard e Aplicação de Teoremas Modulares em Três Etapas.
+
+Autor: Pedro Lucas B. da Silva - 241025710 
+Data: 15/10/2025
+=========================================================
+*/
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -29,25 +37,59 @@ int MDC(int a, int b) {
         int quociente = a / b;
         int resto = a % b;
 
-        printf("%d = %d * %d + %d", a, b, quociente, resto);
-        b = a;
-        a = resto;
+        printf("%d = %d * %d + %d \n", a, b, quociente, resto);
+        a = b;
+        b = resto;
     }
     printf("d= %d \n", a);
     return a;
 }
+//=================================================================
+//Método Pollard Rho utilizando a função g(x)=x²+1 e semente x0 = 2
+int pollard_rho(int n){
+
+    printf("== Fatorando o numero: %d ==\n", n);
+    //Caso Base onde o menor primo divisor seria o 2
+    if(n % 2 == 0){
+        printf("O número é par. Um fator é 2.\n");
+        printf("Os fatores de %d são 2 e %d.\n", n, n / 2);
+        return 2;
+    }
+    const int semente = 2; //x0 = 2
+    int x = semente;
+    int y = semente;
+    int d = 1;  
+
+    while (d == 1){
+        x = ((x * x + 1) % n);
+        
+        y = ((y * y + 1) % n);
+        y = ((y * y + 1) % n);
+
+        printf("|%d, %d| mod %d \n", x, y, n);
+        d = MDC(n, abs(x - y));
+        printf("Resultado: %d \n", d);
+
+        if (d == n){
+            return -1; //Erro que não deveria acontecer
+        }
+    }
+    return d;
+}
+
+// Faltando mostrar as iterações e contar qual iteração é
 
 //=================================================================
-
-
 int main(){
     //Cabeçalho
     printf("+=========================================+ \n");
     printf("|Pedro Lucas Barbosa da Silva - 241025710 | \n"); 
     printf("+=========================================+ \n");
 
-    //Etapa 1 Fatoração Interativa (Método ρ de Pollard)
-    //Entrada de dados - inicialização das variáveis
+    printf("\n");
+    printf("Etapa 1 Fatoracao Interativa (Metodo ρ de Pollard) \n");
+    printf("Entrada de dados - inicializacao das variaveis \n");
+    printf("\n");
 
     int N1, N2;
 do {
@@ -69,11 +111,34 @@ do {
     }
 } while ((N1 < 100 || N1 > 9999) || (N2 < 100 || N2 > 9999) || (N1 == N2) || (!Composto(N1) || !Composto(N2)));
 
-    // Implementação do método ρ de Pollard:
-    // Utilizando a função g(x) = (x²+1) mod N
-    // Semente (Xo) = 2
+    printf("\n");
+    printf("Verificao bem sucedida!. Os numeros %d e %d atendem aos criterios", N1, N2);
+    printf("\n");
 
+    printf("Etapa 1.5 Aplicando o metodo Pollard Rho nos nossos %d e %d \n", N1, N2);
+    printf("\n");
 
+    int p = pollard_rho(N1);
+    int cofatorN1; // 1. Declara a variável do segundo cofator de N1
+    if (p != 0) cofatorN1 = N1 / p; // 2. Se p não for zero, calcula a divisão 
+        else cofatorN1 = 0;      // 3. Senão, atribui 0 para segurança
+    if (p <= 1 || p == cofatorN1 || cofatorN1 <= 1 || !primo(cofatorN1) || !primo(p)){
+        printf("Erro: O N2: %d não atende aos requisitos, possuir produto de primos distintos. Os fatores obtidos foram: %d e %d \n", N1, p, cofatorN1);
+        return 1;
+    }
 
+    int q = pollard_rho(N2);
+    int cofatorN2; // 1. Declara a variável do segundo cofator de N1
+    if (q != 0) cofatorN2 = N2 / q; // 2. Se p não for zero, calcula a divisão 
+        else cofatorN2 = 0;      // 3. Senão, atribui 0 para segurança
+    if (q <= 1 || q == cofatorN2 || cofatorN2 <= 1 || !primo(cofatorN2) || !primo(q)){
+        printf("Erro: O N2: %d não atende aos requisitos, possuir produto de primos distintos. Os fatores obtidos foram: %d e %d \n", N2, q, cofatorN2);
+        return 1;
+    }
+    printf("\n");
+    printf("Fatores Primos p e q encontrados \n");
+    printf("p = %d \n", p);
+    printf("q = %d \n", q);
+    printf("\n");
     return 0;
 }
