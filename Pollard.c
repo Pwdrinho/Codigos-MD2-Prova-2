@@ -326,6 +326,12 @@ do {
     while(getchar() != '\n'); 
     fgets(mensagem, sizeof(mensagem), stdin);
     mensagem[strcspn(mensagem, "\n")] = 0;
+    // Converter a mensagem para maiúsculas
+    for (int i = 0; mensagem[i] != '\0'; i++) {
+        if (mensagem[i] >= 'a' && mensagem[i] <= 'z') {
+            mensagem[i] = mensagem[i] - 32;
+        }
+    }
 
     printf("\n");
     printf("Pre-Codificacao \n");
@@ -413,6 +419,18 @@ do {
     printf("\n");
     printf("Mensagem decodificada final: \n");
     printf("%s \n", mensagem_decodificada);
+    printf("\n");
+    
+    printf("Verificacao: A mensagem descriptografada eh identica a mensagem original? \n");
+    if (strcmp(mensagem, mensagem_decodificada) == 0) {
+        printf("Sim, a mensagem descriptografada eh identica a mensagem original.\n");
+        printf("Mensagem original: '%s'\n", mensagem);
+        printf("Mensagem descriptografada: '%s'\n", mensagem_decodificada);
+    } else {
+        printf("Nao, a mensagem descriptografada NAO eh identica a mensagem original.\n");
+        printf("Mensagem original: '%s'\n", mensagem);
+        printf("Mensagem descriptografada: '%s'\n", mensagem_decodificada);
+    }
     printf("\n");
 
     printf("Encerrando o programa \n");

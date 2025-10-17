@@ -26,3 +26,11 @@ int main(){
     return 0;
 
 }
+
+int MMC(int a, int b) {
+    int mmc = 0;
+    mmc = a / MDC(a, b) * b;
+    printf("O MMC(%d, %d) = %d", a, b, mmc);
+    return mmc;
+}
+//=================================================================
