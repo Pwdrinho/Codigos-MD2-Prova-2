@@ -57,9 +57,9 @@ int main(){
         }
     } //Verificação das restrições do C
 
-    printf("Etapa 2 - Operacoes \n");
+    printf("Etapa 2 - Calculo do ano sincronizado \n");
     printf("Ano 0: todas as chaves ativadas simultaneamente.\n");
-    printf("Calculando o primeiro ano futuro (>0) em que todas as chaves se sincronizam...\n");
+    printf("Calculando o primeiro ano futuro (X > 0) em que todas as chaves se sincronizam...\n");
     printf("\n");
 
     int ano_sincronizado = C[0];
@@ -72,8 +72,11 @@ int main(){
         }
     }
     if (ano_sincronizado <= 50) {
-        printf("O Ano (>0) mais proximos onde todas as chaves serao ativadas simultaneamente: \n");
+        printf("O Ano (X > 0) mais proximos onde todas as chaves serao ativadas simultaneamente: \n");
         printf("%d \n", ano_sincronizado);
     }
+    printf("\n");
+
+    printf("Encerrando o programa! Da questao 2 - Chaves Periodicas. \n");
     return 0;
 }

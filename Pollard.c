@@ -433,6 +433,6 @@ do {
     }
     printf("\n");
 
-    printf("Encerrando o programa \n");
+    printf("Encerrando o programa! Da questao 1 - Sistema RSA com Fatoração ρ de Pollard. \n");
     return 0;
 }
