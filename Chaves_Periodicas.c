@@ -1,8 +1,8 @@
 /*=========================================================
-Chaves Periódicas
+Questão 2 - Chaves Periódicas.
 
 Autor: Pedro Lucas B. da Silva - 241025710 
-Data: 15/10/2025
+Data: 17/10/2025
 =========================================================*/
 #include <stdio.h>
 
@@ -72,7 +72,31 @@ int main(){
         }
     }
     if (ano_sincronizado <= 50) {
-        printf("O Ano (X > 0) mais proximos onde todas as chaves serao ativadas simultaneamente: \n");
+
+        printf("\n");
+        printf("Etapa 3 - Verificacao do possivel resultado \n");
+        printf("\n");
+
+        int verificado = 1;
+        for (int i = 0; i < N; ++i) {
+            printf("%d mod %d = %d \n", ano_sincronizado, C[i], (ano_sincronizado % C[i]));
+            if (ano_sincronizado % C[i] != 0) {
+                verificado = 0;
+                break;
+            }
+        }
+        if (verificado) {
+            printf("\n");
+            printf("Verificacao bem sucedida: %d mod C[i] = 0 para todos os C[i].\n", ano_sincronizado);
+        } else {
+            printf("\n");
+            printf("Verificacao falhou: %d nao eh multiplo de todos os C[i].\n", ano_sincronizado);
+            printf("Nao e possivel sincronizar as chaves no intervalo de 1 a 50 anos.\n");
+            return 0;
+        }
+
+        printf("\n");
+        printf("O Ano (X > 0) mais proximos onde todas as chaves serao ativadas simultaneamente: ");
         printf("%d \n", ano_sincronizado);
     }
     printf("\n");

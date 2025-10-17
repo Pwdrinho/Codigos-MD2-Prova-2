@@ -1,5 +1,5 @@
 /*=========================================================
-Sistema RSA com Fatoração ρ de Pollard e Aplicação de Teoremas Modulares em Três Etapas.
+Questao 1 - Sistema RSA com Fatoração ρ de Pollard e Aplicação de Teoremas Modulares em Três Etapas.
 
 Autor: Pedro Lucas B. da Silva - 241025710 
 Data: 15/10/2025
