@@ -1,16 +1,13 @@
-/*
-
+/*=========================================================
 Sistema RSA com Fatoração ρ de Pollard e Aplicação de Teoremas Modulares em Três Etapas.
 
 Autor: Pedro Lucas B. da Silva - 241025710 
 Data: 15/10/2025
-=========================================================
-*/
+=========================================================*/
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-
 //=================================================================
 //Método para verificar se o número é primo
 //Retorna true se n for primo, false caso contrário
@@ -44,7 +41,6 @@ int MDC(int a, int b) {
         printf("resto = 0\n");
         return b;
     }
-
     while (b != 0) {
         int quociente = a / b;
         int resto = a % b;
@@ -212,9 +208,7 @@ int Exponenciacao_Modular(int base, int expoente_original, int modulo, int totie
     return resultado;
 }
 //=================================================================
-
 int main(){
-    //Cabeçalho
     printf("+=========================================+ \n");
     printf("|Pedro Lucas Barbosa da Silva - 241025710 | \n"); 
     printf("+=========================================+ \n");
@@ -331,7 +325,7 @@ do {
     printf("Digite a mensagem para Criptografar: ");
     while(getchar() != '\n'); 
     fgets(mensagem, sizeof(mensagem), stdin);
-    mensagem[strcspn(mensagem, "\n")] = 0; // Remove a nova linha
+    mensagem[strcspn(mensagem, "\n")] = 0;
 
     printf("\n");
     printf("Pre-Codificacao \n");
@@ -358,14 +352,15 @@ do {
             strcat(preCodificado, buf);
         }
     }
-
-    printf("\nFrase pre-codificada (sequencia de codigos):\n%s\n", preCodificado);
+    printf("\n");
+    printf("Frase pre-codificada (sequencia de codigos): \n");
+    printf("%s \n", preCodificado);
     printf("\n");
 
     printf("Codificacao \n");
     printf("\n");
 
-    printf("Para cada bloco M, calculamos C ≡ M^%d mod %d\n", e, n);
+    printf("Para cada bloco M, calculamos C ≡ M^%d mod %d \n", e, n);
     printf("\n");
 
     // Converter string de números pré-codificados para array de inteiros
@@ -377,12 +372,12 @@ do {
         mensagem_numerica[num_blocos++] = atoi(token);
         token = strtok(NULL, " ");
     }
-    printf("Blocos da mensagem pre-codificada:\n");
+    printf("Blocos da mensagem pre-codificada: \n");
     for(int i = 0; i < num_blocos; i++) { 
         printf("Bloco M[%d] = %d\n", i + 1, mensagem_numerica[i]);
     }
     printf("\n");
-    printf("Calculando C ≡ M^e mod n para cada bloco:\n");
+    printf("Calculando C ≡ M^e mod n para cada bloco: \n");
     printf("\n");
     int mensagem_cifrada[1000];
     for(int i = 0; i < num_blocos; i++) {
@@ -390,15 +385,15 @@ do {
         mensagem_cifrada[i] = Exponenciacao_Modular(mensagem_numerica[i], e, n, z);
         printf("Resultado final: C[%d] = %d\n", i + 1, mensagem_cifrada[i]);
     }
-    printf("\nMensagem cifrada:\n");
+    printf("\n");
+    printf("Mensagem cifrada: \n");
     for(int i = 0; i < num_blocos; i++) {
         printf("%d ", mensagem_cifrada[i]);
     }
-    printf("\n\n");
+    printf("\n");
 
     // Etapa 3.5 - Decodificação
-    printf("Etapa 3.5 - Decodificação \n");
-    printf("Decodificacao (Descriptografia) \n");
+    printf("Etapa 3.5 - Decodificação (Descriptografia) \n");
     printf("\n");
     printf("Para cada bloco cifrado C, calculamos M ≡ C^%d mod %d\n", D, n);
 
@@ -406,20 +401,20 @@ do {
     char mensagem_decodificada[1001] = "";
 
     for(int i = 0; i < num_blocos; i++) {
-        printf("\nBloco C[%d] = %d:\n", i + 1, mensagem_cifrada[i]);
+        printf("\n");
+        printf("Bloco C[%d] = %d: \n", i + 1, mensagem_cifrada[i]);
         mensagem_decifrada_numerica[i] = Exponenciacao_Modular(mensagem_cifrada[i], D, n, z);
         char caracter_decodificado = Decodificador(mensagem_decifrada_numerica[i]);
-        printf("Resultado final: M[%d] = %d ->>> Letra '%c'\n", i + 1, mensagem_decifrada_numerica[i], caracter_decodificado);
+        printf("Resultado final: M[%d] = %d ->>> Letra '%c' \n", i + 1, mensagem_decifrada_numerica[i], caracter_decodificado);
         
         char temp_str[2] = {caracter_decodificado, '\0'};
         strcat(mensagem_decodificada, temp_str);
     }
-
-    printf("\nMensagem decodificada final: \n");
+    printf("\n");
+    printf("Mensagem decodificada final: \n");
     printf("%s \n", mensagem_decodificada);
     printf("\n");
 
     printf("Encerrando o programa \n");
-
     return 0;
 }
