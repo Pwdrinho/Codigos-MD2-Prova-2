@@ -54,7 +54,7 @@ Resposta final = 4
   <tr>
     <td align="center">
       <img src="./Imagem/p5.jpg" width="100"><br>
-      <b><a href="https://github.com/Pwdrinho" style="text-decoration:none;color:inherit;"> 🍎 Pedro Lucas 🍊</a></b><br>
+      <b><a href="https://github.com/Pwdrinho" style="text-decoration: none; color: white;"> 🍎 Pedro Lucas 🍊</a></b><br>
       241025710
     </td>
   </tr>
