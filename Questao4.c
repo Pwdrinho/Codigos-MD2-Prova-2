@@ -28,10 +28,7 @@ int inversoModular(int a, int m) {
     int x1 = 1;
     int A = a, B = m;
 
-    if (mdcComPassos(a, m) != 1) {                  // [3] Chamada da função mdcComPassos + restrição em caso de erro
-        printf("Nao existe inverso de %d modulo %d. \n", a, m);
-        return -1;
-    }
+    mdcComPassos(a, m);              // [3] Chamada da função mdcComPassos
 
     while (m != 0) {
         q = a / m;
@@ -93,12 +90,9 @@ int main() {
     int resultado = powMod(a, x, n1);       // [7] Chamada da função exponenciacao modular
     printf("Valor final da congruencia: %d\n", resultado);
 
+    printf("\n");
+    printf("O comando sobre a entrada desejada está no README, bem como as questões de V ou F. \n");
+    printf("\n");
+
     return 0;
 }
-
-
-/* Fazer um arquivo com a saida impressa 
-Para H = 7, G = 3, Zn = 11, x = 10 e n1 = 13
- O resultado final é 4
- aaaaaaaaaaaaaaaaaaa
- */

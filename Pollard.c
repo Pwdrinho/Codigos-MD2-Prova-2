@@ -399,7 +399,7 @@ do {
     printf("\n");
 
     // Etapa 3.5 - Decodificação
-    printf("Etapa 3.5 - Decodificação (Descriptografia) \n");
+    printf("Etapa 3.5 - Decodificacao (Descriptografia) \n");
     printf("\n");
     printf("Para cada bloco cifrado C, calculamos M ≡ C^%d mod %d\n", D, n);
 
@@ -433,6 +433,6 @@ do {
     }
     printf("\n");
 
-    printf("Encerrando o programa! Da questao 1 - Sistema RSA com Fatoração ρ de Pollard. \n");
+    printf("Encerrando o programa! Da questao 1 - Sistema RSA com Fatoracao ρ de Pollard. \n");
     return 0;
 }
