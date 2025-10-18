@@ -40,3 +40,22 @@ int sigma(int n){
 }
 //=================================================================
 //Trial Division
+//=================================================================
+int main(){
+    printf("+=========================================+ \n");
+    printf("|Pedro Lucas Barbosa da Silva - 241025710 | \n"); 
+    printf("+=========================================+ \n");
+
+    printf("\n");
+    
+    printf("Razao de Eficiencia de um numero \n");
+    printf("Etapa 1 - Entrada de dados \n");
+    printf("\n");
+
+    int N;
+
+    printf("Digite um numero inteiro N positivo \n");
+
+
+    return 0;
+}
