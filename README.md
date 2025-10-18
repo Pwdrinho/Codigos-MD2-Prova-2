@@ -10,7 +10,7 @@ Repositório destinádo com os códigos e resoluções da Prova 2 (Ponto Extra) 
 
 <h2 align="center"> Questão 3: Razão de Eficiência de um Número. </h2>
 
-<h2 align="center"> Questão 4 - Bônus</h2>
+<h2 align="center"> Questão 4: Bônus</h2>
 Após corrigir os trechos do Código, foi solicitado: <strong>Qual seria a saída com os valores: H: 7, G: 3, Zn: 11,  x: 10, n1: 13</strong>
 
 #### Rodando o código com as informações solicitadas:
@@ -45,6 +45,45 @@ Resposta final = 4
  sem otimização.
  - { V } Quando o resultado do inverso é negativo, o código ajusta o valor somando o módulo m0.
  - { F } O cálculo de fi(n1) (função totiente de Euler) é utilizado apenas quando n1 não é primo
+
+---
+## Como Executar
+
+Para executar os códigos, siga os passos abaixo:
+
+1.  **Clone o Repositório:**
+    ```bash
+    git clone https://github.com/Pwdrinho/Codigos-MD2-Prova-2.git
+    ```
+
+2.  **Navegue até o Diretório:**
+    ```bash
+    cd Codigos-MD2-Prova-2
+    ```
+
+3.  **Compile e Execute os Códigos:**
+    *   **Questão 1 (RSA com Fatoração ρ de Pollard):**
+        ```bash
+        gcc questao1.c -o questao1
+        ./questao1.c
+        ```
+    *   **Questão 2 (Chaves Periódicas):**
+        ```bash
+        gcc questao2.c -o questao2
+        ./questao2.c
+        ```
+    *   **Questão 3 (Razão de Eficiência de um Número):**
+        ```bash
+        gcc questao3.c -o questao3
+        ./questao3.c
+        ```
+    *   **Questão 4 (Bônus - Teoremas Modulares):**
+        ```bash
+        gcc questao4.c -o questao4
+        ./questao4.c
+        ```
+
+    Certifique-se de ter um compilador C (como GCC) instalado em sua máquina.
 
 ---
 ## 👤 Autor
